@@ -1,1 +1,5 @@
+Counting Sentences 📄 Get the number of sentences in the text using a sentence tokenizer. This will help you understand the structure and complexity of the text.
 
+Counting Words 🗂️ Tokenize the text into individual words and count the total number of words. This will give you an idea of the text's length and verbosity.
+
+Counting Characters 📝 Get the total number of characters in the text, including spaces and punctuation. This will help you understand the text's overall size and complexity.
