@@ -1,3 +1,9 @@
-All things belongs to PHP
+<html>
+<body>
+<head>
+  <h1>All things belongs to PHP</h1>
+  <p>Just copy that .php file into your htdocs folder and you are good to go.(plus also run the xampp server)</p>
+</html>
+</body>
+</head>
 
-Just copy that .php file into your htdocs folder and you are good to go.(plus also run the xampp server)
