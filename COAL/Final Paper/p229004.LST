@@ -1,0 +1,58 @@
+     1                                  ; Roll_No: 22P-9004 ( Ubaid-ur-Rehman )
+     2                                  
+     3                                  [org 0x100]
+     4                                  
+     5 00000000 E92300                  jmp start
+     6                                  
+     7 00000003 0A00                    operand1: dw 10
+     8 00000005 1400                    operand2: dw 20
+     9                                  
+    10                                  greator_than_equal_to:
+    11 00000007 50                                      push ax
+    12 00000008 8B4604                                  mov ax,[bp+4]
+    13 0000000B 394602                                  cmp [bp+2],ax
+    14                                                  
+    15 0000000E 7D14                                    jge skip             ; use for comparsion of greator/above or equal to
+    16                                  
+    17                                  
+    18                                  less_than_equal_to:
+    19 00000010 50                                      push ax
+    20 00000011 8B4604                                  mov ax,[bp+4]
+    21 00000014 394602                                  cmp [bp+2],ax
+    22                                                  
+    23 00000017 760B                                    jbe skip             ; use for comparsion of less/below or equal to
+    24                                  
+    25 00000019 58                                      pop ax              ; the above line can't set the flag in my case that's why i add this
+    26 0000001A C3                                      ret
+    27                                  
+    28                                  
+    29                                  equality:
+    30 0000001B 50                              push ax
+    31 0000001C 8B4604                          mov ax,[bp+4]
+    32 0000001F 394602                          cmp [bp+2],ax
+    33                                          
+    34 00000022 7400                            je  skip                      ; use for comparsion of equal to
+    35                                          
+    36                                          
+    37                                  
+    38                                  skip:
+    39 00000024 58                          pop ax
+    40 00000025 C3                          ret
+    41                                  
+    42                                  start:
+    43 00000026 A1[0300]                    mov ax,[operand1]
+    44 00000029 50                          push ax
+    45 0000002A A1[0500]                    mov ax,[operand2]
+    46 0000002D 50                          push ax
+    47                                      
+    48 0000002E 55                          push bp
+    49 0000002F 89E5                        mov bp,sp
+    50                                  
+    51 00000031 E8D3FF                      call greator_than_equal_to
+    52 00000034 E8D9FF                      call less_than_equal_to
+    53 00000037 E8E1FF                      call equality
+    54                                  
+    55 0000003A 5D                          pop bp                          ; pop the previous stored value of bp
+    56                                  
+    57 0000003B B8004C                      mov ax,0x4c00
+    58 0000003E CD21                        int 0x21
